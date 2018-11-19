@@ -1,5 +1,4 @@
 <h1> All articles </h1>
 <% @articles.each do |a| %>
-  <%= a.title%>
-  <%= a.body%>
+  <%= link_to a.title, article_path(a)%>
 <%end%>

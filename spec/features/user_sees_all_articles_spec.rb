@@ -30,5 +30,16 @@ describe 'user sees all articles' do
 
       expect(page).to have_link('Create New Article')
     end
+
+    it 'displays body of an article when clicking on title link' do
+      article_1 = Article.create!(title: "Title 1", body: "Body 1")
+      article_2 = Article.create!(title: "Title 2", body: "Body 2")
+
+      visit '/articles'
+      click_on article_1.title
+
+      expect(page).to have_content(article_1.title)
+      expect(page).to have_content(article_1.body)
+    end
   end
 end
